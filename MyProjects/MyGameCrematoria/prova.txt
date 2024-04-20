@@ -1,0 +1,68 @@
+bool fila(int i,int j){
+  return cell(i,j,0).type!=Rock or cell(i,(j-1+cols())%cols(),0).type!=Rock or  cell(i,(j+1+cols())%cols(),0).type!=Rock;
+}
+
+bool col(int i,int j){
+  return cell(i,j,0).type!=Rock or cell((i-1+rows())%rows(),j,0).type!=Rock or  cell((i+1+rows())%rows(),j,0).type!=Rock;
+}
+
+void diagonals(Pos& pact){
+  int i=pact.i;
+  int j=pact.j;
+  if(cell((i-2+rows())%rows(),(j-1+cols())%cols(),0).type!=Rock and cell((i-1+rows())%rows(),(j-2+cols())%cols(),0).type!=Rock and cell((i-1+rows())%rows(),(j-1+cols())%cols(),0).type!=Rock ){
+    int iajustada=(i-2+rows())%rows();
+    int jajustada=(j-2+cols())%cols();
+    Pos_atacades_h[iajustada][jajustada]=true;
+  }
+  if(cell((i+2+rows())%rows(),(j-1+cols())%cols(),0).type!=Rock and cell((i+1+rows())%rows(),(j-2+cols())%cols(),0).type!=Rock and cell((i+1+rows())%rows(),(j-1+cols())%cols(),0).type!=Rock ){
+    int iajustada=(i+2+rows())%rows();
+    int jajustada=(j-2+cols())%cols();
+    Pos_atacades_h[iajustada][jajustada]=true;
+
+  }
+  if(cell((i-2+rows())%rows(),(j+1+cols())%cols(),0).type!=Rock and cell((i-1+rows())%rows(),(j+2+cols())%cols(),0).type!=Rock and cell((i-1+rows())%rows(),(j+1+cols())%cols(),0).type!=Rock ){
+    int iajustada=(i-2+rows())%rows();
+    int jajustada=(j+2+cols())%cols();
+    Pos_atacades_h[iajustada][jajustada]=true;
+
+  }
+    if(cell((i+2+rows())%rows(),(j+1+cols())%cols(),0).type!=Rock and cell((i+1+rows())%rows(),(j+2+cols())%cols(),0).type!=Rock and cell((i+1+rows())%rows(),(j+1+cols())%cols(),0).type!=Rock ){
+    int iajustada=(i+2+rows())%rows();
+    int jajustada=(j+2+cols())%cols();
+    Pos_atacades_h[iajustada][jajustada]=true;
+
+  }
+
+}
+
+void unames(Pos& pact){
+  if(fila((pact.i-2+rows())%rows(),pact.j)){
+      int iajustada=(pact.i-2+rows())%rows();
+      for(int j=pact.j-1; j<=pact.j+1;++j){
+        int jajustada=(j+cols())%cols();
+        Pos_atacades_h[iajustada][jajustada]=true;
+      }
+    }
+    if(fila((pact.i+2+rows())%rows(),pact.j)){
+      int iajustada=(pact.i+2+rows())%rows();
+      for(int j=pact.j-1; j<=pact.j+1;++j){
+        int jajustada=(j+cols())%cols();
+        Pos_atacades_h[iajustada][jajustada]=true;
+      }
+    }
+    if(col(pact.i,(pact.j-2+cols())%cols())){
+      int jajustada=(pact.j-2+cols())%cols();
+      for(int i=pact.i-1; i<=pact.i+1;++i){
+         int iajustada=(i+rows())%rows();
+        Pos_atacades_h[iajustada][jajustada]=true;
+      }
+    }if(col(pact.i,(pact.j+2+cols())%cols())){
+        int jajustada=(pact.j+2+cols())%cols();
+        for(int i=pact.i-1; i<=pact.i+1;++i){
+          int iajustada=(i+rows())%rows();
+          Pos_atacades_h[iajustada][jajustada]=true;
+        }
+    }
+    diagonals(pact);
+
+}
