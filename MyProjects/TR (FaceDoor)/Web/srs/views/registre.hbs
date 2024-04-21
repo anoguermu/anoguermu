@@ -1,0 +1,110 @@
+
+<link rel="stylesheet" href="main3.css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link href="https://cdn.jsdelivr.net/gh/bbbootstrap/libraries@main/datedropper.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/gh/bbbootstrap/libraries@main/datedropper.js"></script>
+<!--- Include the above in your HEAD tag-->
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
+{{#if check}}
+<div class="d-flex flex-row">
+    <div class="col-md-3">
+        <nav id="sidebar" class="col sidebar">
+            <ul class="nav flex-column vertical-nav">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">
+                            <div class="card-counter success ">
+                                <i class="fa fa-users"></i>
+                                <span class="count-numbers">{{userInfo}}</span>
+                                <p class="count-name">Authoritzed people</p>
+                            </div>
+                    </a>
+                </li>
+                {{#each users}}
+                 <li class="nav-item">
+                    <a class="nav-link" href="/graphic/{{name}}">
+                        <div class="card-counter info ">
+                            <i class="fa fa-users"></i>
+                            <p class="count-name">{{name}}</p>
+                        </div>
+                    </a>
+                 </li>
+                {{/each}}
+            </ul>
+        </nav>
+    </div>
+    {{#if pressed}}
+    <div class="d-flex flex-column ">
+        <form action="/calen" method="POST">
+            <div class="container d-flex justify-content-center">
+                <div class="row">
+                    <div class="col-md-8 offset-md-3">
+            
+                            <div class="input-group mb-3"> <input type="text" name="calendar" class="form-control input-text">
+                                <div class="input-group-append"> <button class="btn btn-outline-warning" ><i class="fa fa-calendar"></i></button> </div>
+                            </div>
+        
+                    </div>
+                </div>
+            </div>
+        </form>
+        {{/if}}
+        {{#if temps}}
+        {{#each temps}}
+            <div class="mx-auto" style="width: 600px;">
+                <ul class="list-group md-5 text-white offset-md-3">
+                    <li class="list-group-item d-flex justify-content-between align-content-center">
+                    
+                                <div class="d-flex flex-row"> <img src="https://i.imgur.com/hl9pukC.png" width="40" />
+                                    <div class="ml-2">
+                                        <h6 class="mb-0">{{nom}}</h6>
+                                        <div class="about"> <span>{{hora}}:{{minut}}</span> <span>{{dia}}</span></div>
+                                    </div>
+                                </div>
+                
+                    </li>
+                </ul>
+            </div>
+        {{/each}}
+    {{/if}}
+</div>
+
+{{else}}
+<div class="container float-md-centre">
+    <div class="alert alert-dismissible alert-danger col-md-6 offset-md-3 ">
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        <strong>No product Id has been found!</strong> <a href="/reconeixament" class="alert-link">press here</a>to vinculate one
+    </div>
+</div>
+{{/if}}
+
+
+<script>
+    $(document).ready(function(){
+
+        $( "input" ).dateDropper({
+            animate: true,
+            init_animation: "fadein",
+            format: "D/M/Y",
+            lang: "en",
+            lock: true,
+            minYear: 1970,
+            yearsRange: 10,
+
+            //CSS PRIOPRIETIES
+            dropPrimaryColor: "#01CEFF",
+            dropTextColor: "#333333",
+            dropBackgroundColor: "#FFFFFF",
+            dropBorder: "1px solid #08C",
+            dropBorderRadius: 8,
+            dropShadow: "0 0 10px 0 rgba(0, 136, 204, 0.45)",
+            dropWidth: 124,
+            dropTextWeight: 'bold'
+        });
+
+    });
+</script>

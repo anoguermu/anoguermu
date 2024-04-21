@@ -1,0 +1,25 @@
+{
+  "name": "firebase-proba",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon srs/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@popperjs/core": "^2.9.2",
+    "bootswatch": "^5.0.2",
+    "express": "^4.17.1",
+    "express-handlebars": "^5.3.2",
+    "firebase-admin": "^9.10.0",
+    "firebaseui": "^4.8.0",
+    "jquery": "^3.6.0",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.8"
+  }
+}

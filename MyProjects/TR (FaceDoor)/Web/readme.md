@@ -1,0 +1,1 @@
+$env:GOOGLE_APPLICATION_CREDENTIALS="C:\Users\arnau\OneDrive\Escritorio\FIREBASEPROBA\reconeixement-facial-firebase-adminsdk-3mi9b-f58cf111f8.json"
